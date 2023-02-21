@@ -4,9 +4,6 @@ pipeline{
             label "valaxy"
         }
     }
-    environment {
-        PATH = "/opt/apache-maven-3.8.7/bin:$PATH"
-        }
     stages {
         stage('build') {
             steps{

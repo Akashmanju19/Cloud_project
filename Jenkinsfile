@@ -15,8 +15,6 @@ pipeline{
                 echo "------------ build completed ---------"
         }
         } 
-    }
-}
     stage('Unit Test') {
             steps {
                 echo '<--------------- Unit Testing started  --------------->'
@@ -34,5 +32,7 @@ stage("Sonar Analysis"){
             sh "${scannerHome}/bin/sonar-scanner"
         echo '<--------------- Sonar Analysis stopped  --------------->'
     }
+}
+}
 }
 }

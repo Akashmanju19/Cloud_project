@@ -31,7 +31,7 @@ stage("Sonar Analysis"){
         withSonarQubeEnv('valaxy-sonarqube-server') {    
             sh "${scannerHome}/bin/sonar-scanner"
         echo '<--------------- Sonar Analysis stopped  --------------->'
-    }
+    }gut 
 }
 }
 }

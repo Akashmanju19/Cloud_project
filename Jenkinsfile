@@ -1,6 +1,6 @@
 def registry = 'https://akash19.jfrog.io/'
-//def imageName = 'valaxy02.jfrog.io/valaxy-docker/ttrend'
-//def version   = '2.0.2'
+def imageName = 'akash19.jfrog.io/default-docker-local/ttrend'
+def version   = '2.0.2'
 
 pipeline{
     agent {
@@ -78,5 +78,30 @@ stage("Jar Publish") {
             }
         }   
     }
+
+    stage(" Docker Build ") {
+      steps {
+        script {
+           echo '<--------------- Docker Build Started --------------->'
+           app = docker.build(imageName+":"+version)
+           echo '<--------------- Docker Build Ends --------------->'
+        }
+      }
+    }
+
+            stage (" Docker Publish "){
+        steps {
+            script {
+               echo '<--------------- Docker Publish Started --------------->'  
+                docker.withRegistry(registry, 'jfrogforjenkins'){
+                    app.push()
+                }    
+               echo '<--------------- Docker Publish Ended --------------->'  
+            }
+        }
+    }
+
+
+
 }
 }

@@ -93,7 +93,7 @@ stage("Jar Publish") {
         steps {
             script {
                echo '<--------------- Docker Publish Started --------------->'  
-                docker.withRegistry(registry, 'jfrogforjenkins'){
+                docker.withRegistry(registry, 'jfrog-access'){
                     app.push()
                 }    
                echo '<--------------- Docker Publish Ended --------------->'  

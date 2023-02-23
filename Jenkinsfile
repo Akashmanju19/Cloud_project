@@ -89,11 +89,11 @@ stage("Jar Publish") {
       }
     }
 
-            stage (" Docker Publish "){
+    stage (" Docker Publish "){
         steps {
             script {
                echo '<--------------- Docker Publish Started --------------->'  
-                docker.withRegistry(registry, 'jfrog-access'){
+                docker.withRegistry(registry, 'jfrog-credential'){
                     app.push()
                 }    
                echo '<--------------- Docker Publish Ended --------------->'  
